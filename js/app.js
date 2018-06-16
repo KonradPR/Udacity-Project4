@@ -8,7 +8,7 @@ var Enemy = function() {
     this.sprite = 'images/enemy-bug.png';
     this.x = 100;
     this.y = 100;
-    this.speed = 10;
+    this.speed = 50;
 };
 
 // Update the enemy's position, required method for game
@@ -18,12 +18,18 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x += this.speed*dt;
+    if (this.x>=505) {
+      this.x = -this.width;
+    };
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
+Enemy.prototype.width = 100;
+Enemy.prototype.height = 74;
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -34,6 +40,8 @@ var Player = function() {
   this.y = 10;
   this.speed = 80;
   this.direction = 'none'
+  this.width = 65;
+  this.height = 80;
 };
 
 Player.prototype.render = function() {
@@ -41,9 +49,9 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.update = function(dt) {
-  if (this.direction==='left'&&this.x>=0) {
+  if (this.direction==='left'&&this.x>=-15) {
       this.x-=this.speed*dt;
-  } else if (this.direction==='right'&&this.x<=505-91) {
+  } else if (this.direction==='right'&&this.x<=505-88) {
       this.x+=this.speed*dt;
   } else if (this.direction==='up'&&this.y>=0) {
       this.y-=this.speed*dt;
