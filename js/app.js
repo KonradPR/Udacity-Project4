@@ -8,7 +8,7 @@ var Enemy = function() {
     this.sprite = 'images/enemy-bug.png';
     this.x = 100;
     this.y = 100;
-    this.speed = 50;
+    this.speed = 0;
 };
 
 // Update the enemy's position, required method for game
@@ -20,7 +20,7 @@ Enemy.prototype.update = function(dt) {
     this.x += this.speed*dt;
     if (this.x>=505) {
       this.x = -this.width;
-    };
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -28,17 +28,17 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Enemy.prototype.width = 100;
-Enemy.prototype.height = 74;
+Enemy.prototype.width = 80;
+Enemy.prototype.height = 64;
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
   this.sprite = 'images/char-boy.png';
-  this.x = 10;
-  this.y = 10;
-  this.speed = 80;
+  this.x = 205;
+  this.y = 410;
+  this.speed = 120;
   this.direction = 'none'
   this.width = 65;
   this.height = 80;
@@ -58,6 +58,17 @@ Player.prototype.update = function(dt) {
   } else if (this.direction==='down'&&this.y<=606-201) {
       this.y+=this.speed*dt;
   }
+
+  allEnemies.forEach(item => {
+    if(((this.x>=item.x&&this.x<=item.x+item.width)||
+    (this.x+this.width>=item.x&&this.x+this.width<=item.x+item.width))&&
+    ((this.y<=item.y&&this.y>=item.y-item.height)||
+    (this.y-this.height<=item.y&&this.y-this.height>=item.y-item.height)||
+    (this.y-(this.height/2)<=item.y&&this.y-(this.height/2)>=item.y-item.height))) {
+      this.x=0;
+      this.y=0;
+    }
+  });
 };
 
 Player.prototype.handleInput = function(key) {
