@@ -65,10 +65,15 @@ Player.prototype.update = function(dt) {
     ((this.y<=item.y&&this.y>=item.y-item.height)||
     (this.y-this.height<=item.y&&this.y-this.height>=item.y-item.height)||
     (this.y-(this.height/2)<=item.y&&this.y-(this.height/2)>=item.y-item.height))) {
-      this.x=0;
-      this.y=0;
+      this.x = 205;
+      this.y = 410;
     }
   });
+
+  if (this.y<=0) {
+    this.x = 205;
+    this.y = 410;
+  };
 };
 
 Player.prototype.handleInput = function(key) {
