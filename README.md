@@ -1,4 +1,4 @@
-#Arcade Game Clone
+##Arcade Game Clone
 
 ##Table of contents
 
@@ -53,4 +53,4 @@ ocours calls the reset method
 .checkWin() - checks if player has reached the top of tha map and if this ocours
 calls the reset method
 .handleInput(key) - sets the direction in which the player is moving based
-on direction that is given 
+on direction that is given
