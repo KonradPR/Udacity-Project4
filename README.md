@@ -5,6 +5,8 @@
 * [Introduction](#introduction)
 * [Enemy Object](#enemy-object)
 * [Player Obejct](#player-object)
+* [Starting Game](#starting-game)
+* [Playing Game](#playing-game)
 
 
 ## Introduction
@@ -51,6 +53,13 @@ in order to monitor the state of the game
 .checkCollision() - checks if player has colided witch an enemy and if this
 ocours calls the reset method
 .checkWin() - checks if player has reached the top of tha map and if this ocours
-calls the reset method
+calls the reset method, and prints a congratulation message
 .handleInput(key) - sets the direction in which the player is moving based
 on direction that is given
+
+## Starting Game
+To start playing just open the index.html file.
+
+## Playing Game
+You play the game by using arrow keys to move the character around the screen.
+the goal of the game is to reach the water tiles while avoiding bugs.
