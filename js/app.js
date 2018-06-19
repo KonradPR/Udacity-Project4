@@ -66,6 +66,12 @@ Player.prototype.checkCollision = function() {
 //and if it ocours resets player position
 Player.prototype.checkWin = function() {
   if (this.y <= 0) {
+    let msg = document.createElement('p');
+    document.body.appendChild(msg);
+    msg.textContent = 'Congratulations!';
+    setTimeout(function(){
+      msg.remove();
+    },1000);
     this.reset();
   };
 };
