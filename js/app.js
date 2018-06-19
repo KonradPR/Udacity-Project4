@@ -102,6 +102,8 @@ Player.prototype.handleInput = function(key) {
     this.direction = 'up'
   } else if (key === 'down') {
     this.direction = 'down'
+  }else if (key === 'none') {
+    this.direction = 'none';
   }
 };
 
@@ -122,7 +124,7 @@ const player = new Player();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keydown', function(e) {
   var allowedKeys = {
     37: 'left',
     38: 'up',
@@ -131,4 +133,8 @@ document.addEventListener('keyup', function(e) {
   };
 
   player.handleInput(allowedKeys[e.keyCode]);
+});
+
+document.addEventListener('keyup', function(e) {
+  player.handleInput('none')
 });
